@@ -1,0 +1,9 @@
+Garagos east=Komopolis south=Miran
+Komopolis west=Garagos south=Zenodotion
+Miran north=Garagos east=Zenodotion south=Zhuxian
+Zenodotion north=Komopolis west=Miran south=Pindus
+Zhuxian north=Miran east=Pindus
+Pindus north=Zenodotion west=Zhuxian
+Atlantis
+Krishna south=Doggerland
+Doggerland north=Krishna
