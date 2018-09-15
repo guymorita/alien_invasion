@@ -1,38 +1,38 @@
 
 const fs = require('fs');
 
-const lines = fs.readFileSync("./data/world", 'utf-8')
-    .split('\n')
-
 const getNeighbors = (dir) => {
     const n = {}
     for (let i = 1; i < dir.length; i++) {
         const dirCityPair = dir[i].split("=")
-        const [direction, cityName] = dirCityPair
-        n[direction]= cityName
+        const [direction, city] = dirCityPair
+        n[direction]= city
     }
     return n
 }
 
 const convertLine = (line) => {
-    const dir = line.split(" ")
-    const cityName = dir[0]
+    const l = line.split(" ")
+    const city = l[0]
     let neighbors = {}
-    if (dir.length > 1) {
-        neighbors = getNeighbors(dir)
+    if (l.length > 1) {
+        neighbors = getNeighbors(l)
     }
     return {
-        cityName,
+        city,
         neighbors
     }
 }
 
-export const convertWorld = (l) => {
+const convertWorld = (path) => {
+    const lines = fs.readFileSync(path, 'utf-8')
+    .split('\n')
     const world = []
-    for (let line of l) {
-        const li = convertLine(line)
-        world.push(li)
+    for (let line of lines) {
+        const l = convertLine(line)
+        world.push(l)
     }
     return world
 }
 
+module.exports = { convertWorld }
