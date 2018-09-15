@@ -1,5 +1,4 @@
-
-const fs = require('fs');
+import fs from 'fs'
 
 const getNeighbors = (dir) => {
     const n = {}
@@ -24,7 +23,7 @@ const convertLine = (line) => {
     }
 }
 
-const convertWorld = (path) => {
+export const convertWorld = (path) => {
     const lines = fs.readFileSync(path, 'utf-8')
     .split('\n')
     const world = []
@@ -34,5 +33,3 @@ const convertWorld = (path) => {
     }
     return world
 }
-
-module.exports = { convertWorld }

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
-    "invade": "node -e 'require(\"./src/invasion.js\").invadeCommand()'"
+    "invade": "babel-node -e 'require(\"./src/invasion.js\").invadeCommand()'"
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +13,6 @@
     "babel-core": "^6.26.3",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "chai": "^4.1.2",
-    "mocha": "^5.2.0",
     "sillyname": "^0.1.0"
   }
 }
