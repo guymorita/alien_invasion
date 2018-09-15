@@ -15,7 +15,16 @@ class City {
 const activeCities = {}
 
 const createCities = (world) => {
-    console.log('world', world)
+    const cities = {}
+    for (let c of world) {
+        const cityName = c['city']
+        const city = new City({
+            city: cityName,
+            neighbors: c['neighbors']
+        })
+        cities[cityName] = city
+    }
+    return cities
 }
 
 const deployAliens = (num) => {
@@ -25,7 +34,7 @@ const deployAliens = (num) => {
 const invade = () => {
     const world = convertWorld(WORLD_PATH)
     const cities = createCities(world)
-    // createCities
+    console.log(cities)
     // deployAliens
     // runIterations
     // returnCities
