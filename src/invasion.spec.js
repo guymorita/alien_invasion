@@ -5,6 +5,8 @@ import { invade } from './invasion'
 
 describe('invade', () => {
     it('returns true', () => {
-        expect(invade() === true)
+        expect(invade(3) === true)
     })
 })
+
+

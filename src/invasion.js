@@ -1,6 +1,7 @@
+import generateName from 'sillyName'
+
 import { convertWorld } from './importWorld'
 
-const NUMBER_OF_ALIENS = 3
 const NUMBER_OF_MOVES = 100
 const WORLD_PATH = "./data/world"
 
@@ -27,15 +28,27 @@ const createCities = (world) => {
     return cities
 }
 
-const deployAliens = (num) => {
+const deployAliens = (cities, num) => {
+    const listCities = Object.keys(cities)
+    if (num >= listCities.length) throw Error("Too many aliens, send fewer")
 
+    while(num) {
+        const randomIdx = Math.floor(Math.random() * listCities.length)
+        const cityName = listCities[randomIdx]
+        const city = cities[cityName]
+        const cityHasAlien = city.currentAlien
+        if (cityHasAlien) continue
+        city.currentAlien = generateName()
+        num--
+    }
+    return cities
 }
 
-const invade = () => {
+const invade = (numberOfAliens) => {
     const world = convertWorld(WORLD_PATH)
     const cities = createCities(world)
-    console.log(cities)
-    // deployAliens
+    const taintedCities = deployAliens(cities, numberOfAliens)
+    console.log(taintedCities)
     // runIterations
     // returnCities
 }
