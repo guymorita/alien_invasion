@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha",
+    "invade": "node -e 'require(\"./src/invasion.js\").invadeCommand()'"
+
   },
   "author": "",
   "license": "ISC",
