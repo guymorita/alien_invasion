@@ -39,7 +39,7 @@ export const beginAlienAttack = (cities) => {
         const destinationName = getDestinationCity(cities, startingCity)
         if (!destinationName) continue
 
-        cities = alienMove({cities, startingCity, destinationName})
+        cities = moveAlien({cities, startingCity, destinationName})
     }
     return cities
 }
@@ -50,17 +50,18 @@ const randomNumber = (number) => {
 
 const getDestinationCity = (cities, city) => {
     const possibleCities = []
-    if (!city.neighbors) return null
+    if (!city.neighbors.hasNeighbors) return null
 
-    for (let neighbor in city.neighbors) {
-        const cityName = city.neighbors[neighbor]
-        if (cities[cityName]) possibleCities.push(cityName)
+    for (let direction in city.neighbors.getNeighbors()) {
+        const cityName = city.neighbors[direction]
+        if (cities[cityName] && cities[cityName].active) possibleCities.push(cityName)
     }
+
     const randomIndex = randomNumber(possibleCities.length)
     return possibleCities[randomIndex]
 }
 
-const alienMove = ({cities, startingCity, destinationName}) => {
+const moveAlien = ({cities, startingCity, destinationName}) => {
     const destinationCity = cities[destinationName]
     const cityName = startingCity.city
     if (destinationCity.currentAlien) {
