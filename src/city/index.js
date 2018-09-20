@@ -12,10 +12,10 @@ export class City {
 
 export class Neighbors {
     constructor({north, south, east, west}) {
-        this.north = north
-        this.south = south
-        this.east = east
-        this.west = west
+        this.north = north || ''
+        this.south = south || ''
+        this.east = east || ''
+        this.west = west || ''
         this.hasNeighbors = north || south || east || west
     }
 

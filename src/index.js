@@ -1,12 +1,11 @@
 import { parseWorld } from './parse'
 import { createCities } from './city'
 import { deployAliens, beginAlienAttack } from './invasion'
-
-const WORLD_PATH = "./data/world"
+import { path } from './config'
 
 
 export const invade = (numberOfAliens) => {
-    const world = parseWorld(WORLD_PATH)
+    const world = parseWorld(path)
     const cities = createCities(world)
     const citiesWithAliens = deployAliens(cities, numberOfAliens)
     const postApocalypseCities = beginAlienAttack(citiesWithAliens)
@@ -16,8 +15,9 @@ export const invade = (numberOfAliens) => {
 
 export const invadeCli = () => {
     const args = process.argv
-    const numOfAliens = args[args.length - 1]
-    if (!numOfAliens || typeof numOfAliens !== 'number') throw Error("Invalid input")
+    const aliens = args[args.length - 1]
+    const numOfAliens = Number(aliens)
+    if (!numOfAliens) throw Error("Invalid input, send aliens")
     return invade(numOfAliens)
 }
 
