@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
-    "invade": "babel-node -e 'require(\"./src/invasion.js\").invadeCommand()'"
+    "invade": "babel-node -e 'require(\"./src/index.js\").invadeCli()'"
   },
   "author": "",
   "license": "ISC",

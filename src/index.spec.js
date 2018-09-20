@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import { invade } from './invasion'
+import { invade } from './index'
 
 describe('Invasion', () => {
     it('Throws an error if too many Aliens', () => {
