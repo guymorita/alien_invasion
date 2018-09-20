@@ -19,3 +19,5 @@ npm run invade 5
 ``` bash
 npm test
 ```
+
+![Walkthrough](alien.gif)
